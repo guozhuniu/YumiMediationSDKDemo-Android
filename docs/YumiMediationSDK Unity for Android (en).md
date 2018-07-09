@@ -1,5 +1,27 @@
 # YumiMediationSDK Unity for Android 
 
+1. [OVERVIEW](#overview)
+    1. [Introduction](#OVERVIEW)
+	2. [Development Environment](#development-environment)
+2. [DOWNLOADS REQUIRED](#downloads-required)
+	1. [SDK Download](#sdk-download)
+	2. [Third-Party SDK Download](#third-party-sdk-download)
+3. [Integration](#integration)
+	1. [Add resource files](#add-resource-files)
+	2. [Configuring Access to Ads](#configuring-access-to-ads)
+	3. [Log and Toast](#log-and-toast)
+	4. [Testing Platform Integrations](#testing-platform-integrations)
+	5. [Obfuscation](#obfuscation)
+4. [Compilation](#compilation)
+5. [Conclusion](#conclusion)
+6. [Exhibit A](#exhibit-a)
+	1. [Using your own AndroidManifest.xml file](#using-your-own-androidmanifestxml-file)
+	2. [Permissions for Android 6.0 and newer versions](#permissions-for-android-60-and-newer-versions)
+7. [Exhibit B](#exhibit-b)
+	1. [Banner Options](#banner-options)
+	2. [Interstitial Options](#interstitial-options)
+	3. [Rewarded Video Options](#rewarded-video-options)
+
 ## OVERVIEW
 
 ### Introduction
@@ -49,6 +71,8 @@ When Assest / plugins / Android does not have support-v7 or support-v4 related j
 When the application needs to be add to the mraid ad. copy the following files to the../Assest/plugins/Android 
 
 <img src="document_unity\image06.png" alt="img6">
+
+<a href="https://www.iab.com/guidelines/mobile-rich-media-ad-interface-definitions-mraid/">MRAID, or “Mobile Rich Media Ad Interface Definitions,” is the common API (Application Programming Interface) for mobile rich media ads that will run in mobile apps.</a>
 
 Add any third-party SDK adapter resources for the Ad Networks previously chosen: The third-party adapters (yumi_adapter_******_v*.*.*.jar) within adapter folder should be added under \Assets\plugins\Android.
 
@@ -104,12 +128,6 @@ Call IsMediaPrepared() to determine whether video has been loaded. It is recomme
 
 <img src="document_unity\image13.png" alt="img13">
 
-### Google Play Release
-
-The following code will set the App as being released on Google Play.  Setting this state helps determine what global servers we will use, and also how the App may get handled in China where Google has a very small market share.
-```c#
-ZplayYUMIHelper.Instance.SetAppIsGooglePlayVersions();
-```
 
 ### Log and Toast
 
@@ -193,25 +211,28 @@ To use your own file, please do the following:<br>
 (1) Adding this permission (optional) will generally improve the ad fill rate.
 ```xml
 <!-- yumi sdk start -->
-<uses-permission android：name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android：name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android：name="android.permission.ACCESS_FINE_LOCATION"/>
-<uses-permission android：name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android：name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+<!--Below are the permissions required for MRAID advertising-->
 <uses-permission android:name="android.permission.CALL_PHONE"/>
 <uses-permission android:name="android.permission.SEND_SMS"/>
 <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
 <!-- yumi sdk end -->
 ```
 
-(2) Caution: If app targetSdkVersion is 23 or above, you will need to call the following permission check code.   If the user has not previously provided permission, we will need to prompt user authorization via a popup.  This process needs to be called before instantiating an ad.  The android-support-v4.jar also will need to be added prior.
+(2) Note: The third-party platform adapter component registration details will be generated on our website automatically when you choose which Ad Networks you intend to work with.<a href="https://github.com/yumimobi/YumiMediationSDKDemo-Android/blob/master/docs/YumiMediationSDK%20Unity%20-%20Mediation%20List(en)%20.md">《YumiMediationSDK Unity - Mediation List》</a>
+
+### Permissions for Android 6.0 and newer versions
+
+Caution: If app targetSdkVersion is 23 or above, you will need to call the following permission check code.   If the user has not previously provided permission, we will need to prompt user authorization via a popup.  This process needs to be called before instantiating an ad.  The android-support-v4.jar also will need to be added prior.
 ```c#
 YumiUnityAdUtils.CheckPermission();
 ```
-
-(3) Note: The third-party platform adapter component registration details will be generated on our website automatically when you choose which Ad Networks you intend to work with.
 
 ## Exhibit B
 

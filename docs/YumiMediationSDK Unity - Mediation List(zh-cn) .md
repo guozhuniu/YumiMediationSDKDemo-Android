@@ -115,7 +115,7 @@
 |                   |                                |
 | ----------------- | ------------------------------ |
 | Jar名称           | libs/yumi_adapter_applovin.jar |
-| 三方版本          | 6.4.0                          |
+| 三方版本          | 8.0.2                          |
 | GooglePlayService | 需要                           |
 | 支持广告形式      | 插屏, 视频                     |
 | .so/lib工程       | --                             |
@@ -127,7 +127,8 @@
 
 **AndroidManifest.xml注册组件：**
 ```xml
-<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" />
+<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" 
+          android:configChanges="orientation|screenSize"/>
 <activity android:name="com.applovin.adview.AppLovinConfirmationActivity" />
 ```
 
@@ -141,7 +142,7 @@
 <br>
 
 
-### 百度(Baidu)
+### Baidu(百度)
 
 |                   |                             |
 | ----------------- | --------------------------- |
@@ -250,7 +251,7 @@
 <br>
 
 
-### 椰子视频(Coconut)
+### Coconut(椰子视频)
 
 |                   |                                  |
 | ----------------- | -------------------------------- |
@@ -342,7 +343,7 @@
 <br>
 
 
-### 广点通(GdtMob)
+### GdtMob(广点通)
 
 |                   |                           |
 | ----------------- | ------------------------- |
@@ -727,7 +728,7 @@ LineNumberTable, *Annotation*, EnclosingMethod
 <br>
 
 
-### 可玩式广告
+### ZPLAYAds
 
 |                   |                                   |
 | ----------------- | --------------------------------- |
